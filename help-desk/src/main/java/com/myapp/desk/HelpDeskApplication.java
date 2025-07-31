@@ -42,7 +42,7 @@ public class HelpDeskApplication {
         };
     }
 
-    @Bean
+    //@Bean
     CommandLineRunner ticketService(TicketService ticketService) {
         return args -> {
             System.out.println(  ticketService.assignAgentToTicket(1L,2L));
@@ -50,3 +50,33 @@ public class HelpDeskApplication {
     }
 
 }
+// spring-data-jpa-starter
+// DataSource (DB Connection pool)
+// Transactional
+// Hibernate Provider
+
+// spring-boot-starter-web
+// Tomcat
+// JacksonJson (Objects to Json and Json back to objects)
+// spring-data-cache-redis
+
+// Declarative Approach
+// Imperative
+// Declarative
+// Actuator
+// Tracing (zipkin)
+// springboot-starter-security
+
+// Open API Swagger
+// Zipkin for Tracing
+// Spring bOot Admin Status
+// Redis For Caching
+// Security (KeyCloak Identity And Access management Tool)
+// Actuator (Health and other stats)
+// PostgreSql (This is replacing our Inmemory DB H2)
+// Day 10 (Docker CI CD)
+
+// Postgres
+// Zipkin
+// Redis
+// KeyCloak (Identity and access management)

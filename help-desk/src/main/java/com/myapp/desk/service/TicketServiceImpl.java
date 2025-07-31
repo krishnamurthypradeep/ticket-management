@@ -3,6 +3,8 @@ package com.myapp.desk.service;
 import com.myapp.desk.domain.Agent;
 import com.myapp.desk.domain.Status;
 import com.myapp.desk.domain.Ticket;
+import com.myapp.desk.exceptions.AgentNotFoundException;
+import com.myapp.desk.exceptions.TicketNotFoundException;
 import com.myapp.desk.respository.AgentRepository;
 import com.myapp.desk.respository.TicketRepository;
 import org.springframework.cache.annotation.CacheEvict;
@@ -32,9 +34,9 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public Ticket assignAgentToTicket(Long ticketId, Long agentId) {
         Ticket existingTicket = ticketRepository.findById(ticketId)
-                .orElseThrow(() -> new RuntimeException("Ticket not found"));
+                .orElseThrow(() -> new TicketNotFoundException("Ticket not found"));
         Agent agent = agentRepository.findById(agentId)
-                .orElseThrow(() -> new RuntimeException("Agent not found"));;
+                .orElseThrow(() -> new AgentNotFoundException("Agent not found"));;
         existingTicket.setStatus(Status.IN_PROGRESS);
         existingTicket.setAssignedAgent(agent);
                 return ticketRepository.save(existingTicket);

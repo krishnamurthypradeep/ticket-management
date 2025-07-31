@@ -51,3 +51,16 @@ src/
 // docker run -p 6379:6379 redis
 
 // H2 Database In memory db
+
+// InstrumentRepo
+// InstrumentService
+// InstrumentController
+// H2
+// Redis
+
+// TradeRepo
+// TradeService
+// TradeController
+// H2
+
+docker compose up -d

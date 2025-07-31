@@ -35,6 +35,8 @@ public class TicketResource {
     @RolesAllowed("ADMIN")
     public ResponseEntity<Ticket> assignAgent(@PathVariable("id") Long ticketId,
                                           @PathVariable("agentId")    Long agentId) {
+
+
        Ticket updated = ticketService.assignAgentToTicket(ticketId, agentId);
        return ResponseEntity.ok(updated);
     }

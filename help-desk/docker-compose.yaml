@@ -1,0 +1,44 @@
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    user: "0"
+    environment:
+      POSTGRES_USER: kafka
+      POSTGRES_PASSWORD: kafka
+      POSTGRES_DB: kafka_demo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.1.1
+    container_name: keycloak
+    user: "0"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    command: [ "start-dev" ]
+    ports:
+      - "7070:8080"
+  redis:
+    image: redis:7.2
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+
+  zipkin:
+    image: openzipkin/zipkin:2.24
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+
+
+
+volumes:
+  pgdata:
+  redisdata:
